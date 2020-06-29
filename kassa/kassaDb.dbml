@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="kassaApplicatie" Class="kassaDbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-1MI50OM\SQLEXPRESS01;Initial Catalog=kassaApplicatie;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False" SettingsObjectName="kassa.Properties.Settings" SettingsPropertyName="kassaApplicatieConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.klant" Member="klants">
+    <Type Name="klant">
+      <Column Name="klantId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="telefoonnummer" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="voornaam" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="achternaam" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="stad" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="klant_bestelling" Member="bestellings" ThisKey="klantId" OtherKey="klantId" Type="bestelling" />
+    </Type>
+  </Table>
+  <Table Name="dbo.bestelling" Member="bestellings">
+    <Type Name="bestelling">
+      <Column Name="bestellingId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="datum" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="klantId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="bestelling_ItemPerBestelling" Member="ItemPerBestellings" ThisKey="bestellingId" OtherKey="bestellingId" Type="ItemPerBestelling" />
+      <Association Name="klant_bestelling" Member="klant" ThisKey="klantId" OtherKey="klantId" Type="klant" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ItemPerBestelling" Member="ItemPerBestellings">
+    <Type Name="ItemPerBestelling">
+      <Column Name="itemId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="aantal" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="productId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="bestellingId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="product_ItemPerBestelling" Member="product" ThisKey="productId" OtherKey="productId" Type="product" IsForeignKey="true" />
+      <Association Name="bestelling_ItemPerBestelling" Member="bestelling" ThisKey="bestellingId" OtherKey="bestellingId" Type="bestelling" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.productType" Member="productTypes">
+    <Type Name="productType">
+      <Column Name="typeId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="omschrijving" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="productType_product" Member="products" ThisKey="typeId" OtherKey="typeId" Type="product" />
+    </Type>
+  </Table>
+  <Table Name="dbo.product" Member="products">
+    <Type Name="product">
+      <Column Name="productId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="productNaam" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="prijs" Type="System.Decimal" DbType="Decimal(6,0)" CanBeNull="true" />
+      <Column Name="typeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="product_ItemPerBestelling" Member="ItemPerBestellings" ThisKey="productId" OtherKey="productId" Type="ItemPerBestelling" />
+      <Association Name="productType_product" Member="productType" ThisKey="typeId" OtherKey="typeId" Type="productType" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

@@ -1,0 +1,21 @@
+﻿<Window x:Class="kassa.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:kassa"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="bg.png"/>
+        </Grid.Background>
+        <Grid x:Name="gInhoud" HorizontalAlignment="Left" Height="286" Margin="0,133,0,0" VerticalAlignment="Top" Width="792">
+            <Button x:Name="btnKlant" Content="KLANT" HorizontalAlignment="Center" VerticalAlignment="Top" Width="310" Height="55" Margin="240,20,236,20" BorderBrush="Black" Foreground="#BF010A0C" FontSize="24" FontFamily="Arial" Click="btnKlant_Click" Background="#A5DDDDDD"/>
+            <Button x:Name="btnMedewerker" Content="MEDEWERKER" HorizontalAlignment="Center" VerticalAlignment="Top" Width="310" Height="55" Margin="243,100,239,0" BorderBrush="Black" Foreground="#BF010A0C" FontSize="24" FontFamily="Arial" Click="btnMedewerker_Click" Background="#A5DDDDDD"/>
+            <Button x:Name="btnNieuw" Content="NIEUWE GEBRUIKER" HorizontalAlignment="Center" VerticalAlignment="Top" Width="310" Height="55" Margin="243,181,239,0" BorderBrush="Black" Foreground="#BF010A0C" FontSize="24" FontFamily="Arial" Click="btnNieuw_Click" Background="#A5DDDDDD"/>
+        </Grid>
+        <Label Content="BLACK TULIP" HorizontalAlignment="Left" Margin="242,42,0,0" VerticalAlignment="Top" Height="86" Width="434" FontSize="48" TextOptions.TextFormattingMode="Display" FontFamily="Tempus Sans ITC" Cursor="Arrow" Foreground="Black" FontWeight="Bold"/>
+
+    </Grid>
+</Window>

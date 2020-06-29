@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="kassa.nieuw"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:kassa"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Width="792" Height="286">
+    <Grid Width="792" Height="286">
+        <DataGrid x:Name="dgKlanten" HorizontalAlignment="Left" Height="266" Margin="442,10,0,0" VerticalAlignment="Top" Width="298" AutoGenerateColumns="False" Background="{x:Null}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding klantId}" ClipboardContentBinding="{x:Null}" Header="Klantnummer"/>
+                <DataGridTextColumn Binding="{Binding voornaam}" ClipboardContentBinding="{x:Null}" Header="Voornaam"/>
+                <DataGridTextColumn Binding="{Binding achternaam}" ClipboardContentBinding="{x:Null}" Header="Achternaam"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btnWijzig" Content="Wiijzig" Click="btnWijzig_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid x:Name="gWijzig" HorizontalAlignment="Left" Height="286" Margin="10,0,0,0" VerticalAlignment="Top" Width="379">
+            <StackPanel HorizontalAlignment="Left" Height="266" Margin="46,10,0,0" VerticalAlignment="Top" Width="296">
+                <TextBlock TextWrapping="Wrap" Text="Telefoonnummer"/>
+                <TextBox x:Name="txtTelefoon" Height="23" TextWrapping="Wrap" Background="#A5FFFFFF"/>
+                <TextBlock TextWrapping="Wrap" Text="Voornaam"/>
+                <TextBox x:Name="txtVoornaam" Height="23" TextWrapping="Wrap" Background="#A5FFFFFF"/>
+                <TextBlock TextWrapping="Wrap" Text="Achternaam"/>
+                <TextBox x:Name="txtAchternaam" Height="23" TextWrapping="Wrap" Background="#A5FFFFFF"/>
+                <TextBlock TextWrapping="Wrap" Text="Stad"/>
+                <TextBox x:Name="txtStad" Height="23" TextWrapping="Wrap" Background="#A5FFFFFF"/>
+                <Button x:Name="btnOpslaan" Content="OPSLAAN" Click="btnOpslaan_Click" Margin="25" Height="35" Background="#A5DDDDDD"/>
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+</UserControl>
