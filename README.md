@@ -1,1 +1,1 @@
-# KassaApplicatie
+# kassaApplicatie
